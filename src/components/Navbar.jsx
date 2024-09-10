@@ -91,13 +91,13 @@ const Navbar = () => {
                 <Link to="/user/settings" className="navbar-link">Settings</Link>
               </li>
               <li className="p-4">
-                <Link to="/user/create-article" className="navbar-link">Articles List</Link>
+                <Link to="/user/articles" className="navbar-link">Articles List</Link>
               </li>
               <li className="p-4">
                 <Link to="/user/create-article" className="navbar-link">New Article</Link>
               </li>
               <li className="p-4">
-                <button onClick={handleUserLogout} className="navbar-link text-red-400">
+                <button onClick={handleUserLogout} className="navbar-link border rounded-md border-red-300 px-3">
                   Logout ({localStorage.getItem('name')})
                 </button>
 

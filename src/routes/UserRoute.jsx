@@ -4,6 +4,7 @@ import UserSignup from '../components/user/UserSignup'
 import { UserPrivateRoute } from './UserPrivateRoute'
 import UserLogin from '../components/user/UserLogin'
 import Home from '../components/user/Home'
+import CreateArticle from '../components/user/CreateArticle'
 
 
 export default function UserRoutes() {
@@ -14,6 +15,7 @@ export default function UserRoutes() {
         <Route path='/login' element={<UserLogin/>}/>
         <Route element= {<UserPrivateRoute/>}>
             <Route path='/home' element={<Home/>}/>
+            <Route path='/create-article' element={<CreateArticle/>}/>
         </Route>
     </Routes>
     </>

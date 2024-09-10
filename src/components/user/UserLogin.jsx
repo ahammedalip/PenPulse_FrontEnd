@@ -53,6 +53,7 @@ export default function UserLogin() {
                     role: decodedToken.role
                 }));
                 localStorage.setItem('name', decodedToken.name)
+                localStorage.setItem('id', decodedToken.id)
 
                 navigate('/user/home')
             } else {

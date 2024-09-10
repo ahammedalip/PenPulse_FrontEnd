@@ -12,6 +12,7 @@ module.exports = {
         purpleGray: '#4F4557',
         mutedPurple: '#6D5D6E',
         lightCream: '#F4EEE0',
+        seriousDark:'#2D2B38'
       },
     },
   },
