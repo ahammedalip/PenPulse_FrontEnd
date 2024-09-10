@@ -1,27 +1,27 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { API_BASE_URL } from '../config/apiConfig';
-// Create an instance of Axios with default settings
+
+// Create an instance of Axios
 const axiosInstance = axios.create({
-  baseURL: API_BASE_URL, // Backend URL for API
+  baseURL: API_BASE_URL,
   headers: {
-    'Content-Type': 'application/json',  // Default content type
+    'Content-Type': 'application/json',
   },
-  withCredentials: true, 
+  withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    // If you store a token in cookies, retrieve it here and set it in the headers
-    const token = Cookies.get('authToken');  
+    const isUserApi = config.url.includes('/user/');  // Check if the request is for user API
+
+    const token = isUserApi ? Cookies.get('userAuthToken') : Cookies.get('authToken');
     if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;  // Add the token to the headers
+      config.headers['Authorization'] = `Bearer ${token}`;
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 export default axiosInstance;
