@@ -5,6 +5,7 @@ import { UserPrivateRoute } from './UserPrivateRoute'
 import UserLogin from '../components/user/UserLogin'
 import Home from '../components/user/Home'
 import CreateArticle from '../components/user/CreateArticle'
+import Home1 from '../components/user/Home1'
 
 
 export default function UserRoutes() {
