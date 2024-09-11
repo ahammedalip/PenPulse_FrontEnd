@@ -3,6 +3,8 @@ import { FaPlus, FaEdit } from 'react-icons/fa';
 import axiosInstance from '../../axios/api';
 import PulseLoader from "react-spinners/PulseLoader";
 import toast from 'react-hot-toast';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 export default function Category() {
   const [category, setCategory] = useState('');
@@ -11,6 +13,8 @@ export default function Category() {
   const [editingCategoryId, setEditingCategoryId] = useState(null); // Track which category is being edited
   const [editedCategoryName, setEditedCategoryName] = useState(''); // Store edited category name
 
+  const navigate = useNavigate()
+  
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
@@ -21,8 +25,15 @@ export default function Category() {
           setLoading(false);
         }
       } catch (error) {
-        toast.error('Failed to fetch categories');
-        setLoading(false);
+        if (error.response && error.response.status === 401) {
+          toast.error('Your session has expired, please login again.');
+          setLoading(false)
+          Cookies.remove('authToken')
+          navigate('/admin/login'); 
+        } else {
+          toast.error('Failed to fetch categories');
+          setLoading(false)
+        }
       }
     };
     fetchData();
@@ -61,7 +72,7 @@ export default function Category() {
         if (res.data.success) {
           toast.success('Category updated successfully');
 
-        
+
           setCategories(categories.map((cat) =>
             cat._id === categoryId ? { ...cat, name: updatedCategory } : cat
           ));
