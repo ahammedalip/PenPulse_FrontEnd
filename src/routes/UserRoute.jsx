@@ -6,6 +6,7 @@ import UserLogin from '../components/user/UserLogin'
 import Home from '../components/user/Home'
 import CreateArticle from '../components/user/CreateArticle'
 import Home1 from '../components/user/Home1'
+import UserArticles from '../components/user/UserArticles'
 
 
 export default function UserRoutes() {
@@ -17,6 +18,7 @@ export default function UserRoutes() {
         <Route element= {<UserPrivateRoute/>}>
             <Route path='/home' element={<Home/>}/>
             <Route path='/create-article' element={<CreateArticle/>}/>
+            <Route path='/articles' element={<UserArticles/>}/>
         </Route>
     </Routes>
     </>

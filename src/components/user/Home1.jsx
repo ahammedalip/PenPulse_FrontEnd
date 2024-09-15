@@ -11,8 +11,8 @@ import TimeAgo from 'javascript-time-ago';
 
 // Import locales you need
 import en from 'javascript-time-ago/locale/en.json'; // English locale
-import Article from './Articles';
-TimeAgo.addDefaultLocale(en);
+import Article from './ComponentArticles';
+// TimeAgo.addDefaultLocale(en);
 
 
 export default function Home1() {

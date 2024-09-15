@@ -207,8 +207,8 @@ export default function CreateArticle() {
                         ) : (
                             <div className='flex flex-wrap mt-2 gap-2'>
                                 {preferences?.map((preference) => (
-                                    <div className='border border-purpleGray hover:border-gray-400 rounded-full px-2 p-2 bg-purpleGray hover:bg-mutedPurple transform duration-300'>
-                                        <label key={preference._id} className='mr-4 mb-2'>
+                                    <div key={preference._id} className='border border-purpleGray hover:border-gray-400 rounded-full px-2 p-2 bg-purpleGray hover:bg-mutedPurple transform duration-300'>
+                                        <label  className='mr-4 mb-2'>
                                             <input
                                                 type='checkbox'
                                                 value={preference._id}
