@@ -5,7 +5,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import ReactTimeAgo from 'react-time-ago';
 
-const Article = ({ article, userId, handleLike, handleDislike }) => {
+const ComponentArticle = ({ article, userId, handleLike, handleDislike }) => {
     return (
         <div className='rounded-md bg-seriousDark p-3 shadow-lg space-y-3 flex flex-col'>
             <div className='flex justify-between'>
@@ -45,4 +45,4 @@ const Article = ({ article, userId, handleLike, handleDislike }) => {
     );
 };
 
-export default Article;
+export default ComponentArticle;
