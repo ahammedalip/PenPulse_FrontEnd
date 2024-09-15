@@ -5,7 +5,7 @@ import { FaCircleNodes } from "react-icons/fa6";
 import { clearAdminDetails } from '../features/adminSlice';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode'; // Fix import for jwtDecode
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './Navbar.css'
 import toast from 'react-hot-toast';
 
@@ -51,7 +51,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-purpleGray text-lightCream p-2 shadow-md fixed w-full">
+    <nav className="bg-purpleGray text-lightCream p-4 shadow-md fixed w-full ">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-2xl font-extralight flex items-center">
           <FaCircleNodes className="mr-2" />
@@ -73,10 +73,10 @@ const Navbar = () => {
           {adminToken ? (
             <>
               <li className="p-4">
-                <Link to='/users' className='navbar-link'>Users</Link>
+                <NavLink to='/users' className="navbar-link" activeClassName="active">Users</NavLink>
               </li>
               <li className="p-4">
-                <Link to='/admin/category' className='navbar-link'>Category</Link>
+                <NavLink to='/admin/category' className='navbar-link' activeClassName="active">Category</NavLink>
               </li>
               <li className="p-4">
                 <button onClick={handleLogout} className="navbar-link">Logout</button>
@@ -84,24 +84,21 @@ const Navbar = () => {
             </>
           ) : userToken ? (
             <>
-              <li className="p-4">
-                <Link to="/user/home" className="navbar-link">Home</Link>
-              </li>
-              <li className="p-4">
-                <Link to="/user/settings" className="navbar-link">Settings</Link>
-              </li>
-              <li className="p-4">
-                <Link to="/user/articles" className="navbar-link">Articles List</Link>
-              </li>
-              <li className="p-4">
-                <Link to="/user/create-article" className="navbar-link">New Article</Link>
-              </li>
-              <li className="p-4">
-                <button onClick={handleUserLogout} className="navbar-link border rounded-md border-red-300 px-3">
-                  Logout ({localStorage.getItem('name')})
-                </button>
 
-              </li>
+              <NavLink to="/user/home" className="navbar-link" activeClassName="active">Home</NavLink>
+
+
+              <NavLink to="/user/settings" activeClassName="active" className="navbar-link">Settings</NavLink>
+
+              <NavLink to="/user/articles" activeClassName="active" className="navbar-link">Articles List</NavLink>
+
+
+              <NavLink to="/user/create-article" activeClassName="active" className="navbar-link">New Article</NavLink>
+
+              <button onClick={handleUserLogout} className="navbar-link border rounded-md border-red-300 px-3">
+                Logout ({localStorage.getItem('name')})
+              </button>
+
             </>
           ) : (
             <>
